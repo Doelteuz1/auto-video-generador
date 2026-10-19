@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/videos")
+@CrossOrigin(origins = "*")
 public class VideoController {
 
     private final ScriptService scriptService;
@@ -44,4 +45,9 @@ public class VideoController {
             return ResponseEntity.internalServerError().body("Error en la generación: " + e.getMessage());
         }
     }
+    @GetMapping("/test")
+    public ResponseEntity<String> probarBackend() {
+        return ResponseEntity.ok("¡El generador de videos está en línea y funcionando perfectamente!");
+    }
+
 }
